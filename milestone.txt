@@ -4,6 +4,8 @@ hello world
 
 ok
 
+1
+
 Project Name: Social Media on Terra Blockchain
 Your Name: Bi Tian (Jack) Yuan
 Your SUNetID: jackyuan
