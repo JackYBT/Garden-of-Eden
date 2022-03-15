@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Garden of Eden Final Project</title>
+
+    <!-- These two lines provide automatic page and style reloading when files change -->
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/lib/client/updater.js" defer></script>
+
+    <link rel="stylesheet" href="base_styles.css">
+  </head>
+  <body>
+    <h1>
+      Garden of Eden
+    </h1>
+    <section id="textGarden">
+      <div>
+        <h3>Journal Entry</h3>
+       <!-- Need to add DOM under this div when pulling text from the backend --> 
+        <div id="displayText">
+        </div>
+      </div>
+        <form id="submitText">
+          <input name="newText" placeholder = "Today's journal">
+          <button type="submit" name = "submit">Submit Text</button>
+        </form>
+      <div>
+        
+      </div>
+    </section>
+    
+  </body>
+</html>
