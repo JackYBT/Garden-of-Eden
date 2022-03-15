@@ -2,6 +2,8 @@ CS193X Final Project Milestone
 =============================
 hello world
 
+ok
+
 Project Name: Social Media on Terra Blockchain
 Your Name: Bi Tian (Jack) Yuan
 Your SUNetID: jackyuan
