@@ -6,6 +6,7 @@ ok
 
 1
 2
+3
 
 Project Name: Social Media on Terra Blockchain
 Your Name: Bi Tian (Jack) Yuan
