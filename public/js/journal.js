@@ -22,7 +22,7 @@
         return data;
     }
 
-    //static async postJournal(text) {
-    //    let result = await apiRequest("POST", "/journal",)
-    //}
+    static async postJournal(text) {
+        let result = await apiRequest("POST", "/journal", {'text': text});
+    }
  }

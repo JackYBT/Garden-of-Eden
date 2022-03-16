@@ -7,3 +7,13 @@ body {
     font-family:monospace;
 }
 
+.widthContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dailyJournal {
+    display: flex;
+    background-color: beige;
+}
