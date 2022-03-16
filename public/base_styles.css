@@ -7,13 +7,46 @@ body {
     font-family:monospace;
 }
 
-.widthContainer {
+.journalTitleBox {
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 15px;
+    background-color: aliceblue;
+}
+
+.widthContainer {
+    display:flex;
+    justify-content: center;
+    font-family: fantasy;
+}
+/*
+.widthContainer {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#journalTitle {
+    text-align: center;
+}
+
+#refresh_journal {
+    float: left;
+}
+
+#dailyJournalBox {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
 }
 
 .dailyJournal {
     display: flex;
     background-color: beige;
 }
+
+#dailyPictureBox {
+    position: relative;
+}
+*/

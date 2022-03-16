@@ -45,7 +45,7 @@ class App {
 
     async _loadProfile() {
         let new_container = this._createJournalDisplay();
-        document.querySelector("#dailyJournal").firstChild.replaceWith(new_container);
+        document.querySelector("#dailyJournalBox").firstChild.replaceWith(new_container);
         
     } 
 

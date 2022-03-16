@@ -15,33 +15,46 @@
 
   </head>
   <body>
-    <h1>
-      Garden of Eden
-    </h1>
-    <section id="textGarden">
-      <div>
-        <h3>Journal Entry</h3>
-       <!-- Need to add DOM under this div when pulling text from the backend --> 
-        <div id="displayText">
-        </div>
-        </div>
+    <main>
+
+      <h1>
+        Garden of Eden
+      </h1>
+
+      <section id="AddingInformation">
+        <div>
+          <h3>Journal Entry</h3>
           <form id="submitText">
             <input name="newtext" placeholder = "Today's journal">
             <button type="submit" name = "submit">Submit Text</button>
           </form>
-        <div>
-      </div>
-
-      <div class = "widthContainer">
-        <h2>Memories</h2>
-        <button type = "button" id="refresh_journal">Refresh Journal</button>
-
-        <div id = "dailyJournal">
-          <div></div> 
         </div>
 
-      </div>
-    </section>
-    
+        <div>
+          <h3>Picture Entry</h3>
+          <form id="submitPicture">
+            <input name="newpicture" placeholder = "New picture?">
+            <button type="submit" name = "submit">Submit Picture URL</button>
+          </form>
+        </div>  
+      </section>
+
+      <section id="GardenOfEden">
+        <div class="journalTitleBox">
+          <h2 id = "journalTitle">Memories</h2>
+          <button type = "button" id ="refresh_journal">Refresh Journal</button> 
+        </div>
+
+        <div class = "widthContainer">
+          <div id = "dailyJournalBox">
+          </div>
+        </div>
+
+        <div class = "widthContainer">
+          <div id = "dailyPictureBox">
+          </div>
+        </div>
+      </section>
+
   </body>
 </html>
