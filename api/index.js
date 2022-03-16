@@ -1,6 +1,7 @@
 import bodyParser from "body-parser";
 import cors from "cors";
 import express from "express";
+import { random } from "mathjs";
 import { MongoClient } from "mongodb";
 //import {Math} from 'math';
 let DATABASE_NAME = "garden_of_eden_db";
@@ -25,7 +26,7 @@ const initAPI = async app => {
   client = await MongoClient.connect(uri);
   database = client.db(DATABASE_NAME);
   Journal = database.collection("journal");
-  //Photo = database.collection("photos");
+  Photo = database.collection("photos");
   };
 
 api.use(bodyParser.json());
@@ -72,6 +73,36 @@ api.post("/journal", async(req,res) => {
     return;
   }
   await Journal.insertOne({text: text, time: new Date()});
+  res.json({success: true});
+  return {"success": true};
+})
+
+/**
+ * Function: api.get("/picture")
+ * Usage: Returns a random photoURL from the database to the user's request
+ */
+
+api.get("/picture", async(req,res) => {
+  let picture = await Photo.find().toArray();
+  console.log("Length" + picture.length);
+  let randomIndex = getRandomInt(picture.length);
+  let photoURL = picture[randomIndex].photoURL;
+  console.log("randomIndex" + randomIndex);
+  res.json({photoURL});
+  return photoURL;
+});
+
+/**
+ * Function: api.post("/picture")
+ * Usage: Takes in an input pictureURL from the user and adds it to the backend database
+ */
+ api.post("/picture", async(req,res) => {
+  let photoURL = req.body.photoURL;
+  if (!photoURL) {
+    res.status(400).json({error: `You didn't input your pictureURL`});
+    return;
+  }
+  await Photo.insertOne({photoURL: photoURL, time: new Date()});
   res.json({success: true});
   return {"success": true};
 })

@@ -4,7 +4,7 @@
 
  import apiRequest from "./api.js";
 
- export default class Journal {
+ export default class Photo {
 
     /** Function: Constructor
     * Usage://Copies over all the JSON "id:key" pairs over to this 
@@ -17,14 +17,16 @@
     /**
      * Returns a random journal entry from the past
      */
-    static async getJournal() {
-        let data = await apiRequest("GET", "/journal");
+    static async getPhoto() {
+        let data = await apiRequest("GET", "/picture");
         return data;
     }
-   /**
-     * Posts the new journal entry into the backend database
+
+    /**
+     * Posts the avatrURL into the backend database
      */
-    static async postJournal(text) {
-        let result = await apiRequest("POST", "/journal", {'text': text});
+
+    static async postPhoto(text) {
+        let result = await apiRequest("POST", "/picture", {'photoURL': text});
     }
  }
