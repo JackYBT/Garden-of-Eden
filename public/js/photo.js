@@ -19,7 +19,8 @@
      */
     static async getPhoto() {
         let data = await apiRequest("GET", "/picture");
-        return data;
+        let object = new Photo(data);
+        return object;
     }
 
     /**
