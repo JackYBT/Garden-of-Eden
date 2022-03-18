@@ -17,6 +17,9 @@ class App {
 
         this._RefreshButton = null;
         this._loadProfile = this._loadProfile.bind(this);
+
+        this._emotion = null;
+        this._emotionUpdate = this._emotionUpdate.bind(this);
     }
 
     setup() {
@@ -30,6 +33,12 @@ class App {
 
         this._RefreshButton = document.querySelector("#refresh_journal");
         this._RefreshButton.addEventListener("click", this._loadProfile);
+   
+        deepai.setApiKey('16f21b1e-94e8-46c1-91c6-70242121f345');
+
+        this._journalUpdate();
+        this._photoButtonUpdate();
+
     }
 
     /**
@@ -48,9 +57,7 @@ class App {
      * Usage: Helper function to update the frontend with a new journal entry 
      */
     async _journalUpdate() {
-
         this._journal = await Journal.getJournal();
-        //console.log(this._journal.finalText); 
         let new_container = this._createJournalDisplay();
         document.querySelector("#dailyJournalBox").firstChild.replaceWith(new_container);
         
@@ -59,15 +66,22 @@ class App {
     /**
      * Function:_createJournalDisplay() 
      * Usage: Return a container that containes a div with the returned random
-     * journal entry from the backend
+     * journal entry and the analyzed emotion from the backend
      */
     _createJournalDisplay() {
         let container = document.createElement("div");
         container.classList.add("dailyJournal");
 
         let text = document.createElement("span");
+        text.id = "journal";
         text.textContent = this._journal.finalText;
         container.append(text);
+
+        let emotion = document.createElement("span");
+        emotion.id = "emotion";
+        emotion.textContent = this._emotion[0];
+        container.append(emotion);
+
         return container;
     }    
 
@@ -112,6 +126,15 @@ class App {
     }
 
     /**
+     * Function: _emotionUpdate()
+     * Usage: Returns the emotion of the text analyzed 
+     */
+    async _emotionUpdate() {
+        this._emotion = await this._journal.getEmotion();
+        console.log("This is emotion!", this._emotion[0]);
+    }
+
+    /**
      * Function: _loadProfile
      * Usage: Uploads the frontend with a pair of new picture and journal entry
      */ 
@@ -119,6 +142,7 @@ class App {
         event.preventDefault();
         this._journalUpdate();
         this._photoButtonUpdate();
+        this._emotionUpdate();
     } 
 }
 
