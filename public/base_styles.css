@@ -13,6 +13,9 @@ body {
     align-items: center;
     gap: 15px;
     background-color: aliceblue;
+    padding: 0.5rem 0;
+    margin-bottom: 1rem;
+
 }
 
 .widthContainer {
@@ -27,7 +30,8 @@ body {
     justify-content: center;
     padding: 0.5rem 0;
     margin-bottom: 1.5rem;
-    border-bottom: 1px solid #ccd6dd;
+    border-bottom: 3px solid #ccd6dd;
+    text-align: center;
 }
 
 button {
@@ -47,10 +51,19 @@ input:focus, textarea:focus {
 
 #emotion {
     font-weight: bold;
+    display: inline-block;
+    margin: 10px 10px 0 0;
+    padding: 5px 10px;
 }
 
-img {
-    
+#journal {
+    display: inline-block;
+    margin: 10px 10px 0 0;
+    padding: 5px 10px; 
+}
+
+#image {
+    max-width: 300px;
 }
 
 /*

@@ -20,6 +20,7 @@ class App {
 
         this._emotion = null;
         this._emotionUpdate = this._emotionUpdate.bind(this);
+        this._insertEmotion = this._insertEmotion.bind(this);
     }
 
     setup() {
@@ -36,9 +37,8 @@ class App {
    
         deepai.setApiKey('16f21b1e-94e8-46c1-91c6-70242121f345');
 
-        this._journalUpdate();
-        this._photoButtonUpdate();
-
+        //this._journalUpdate();
+        //this._photoButtonUpdate();
     }
 
     /**
@@ -60,7 +60,7 @@ class App {
         this._journal = await Journal.getJournal();
         let new_container = this._createJournalDisplay();
         document.querySelector("#dailyJournalBox").firstChild.replaceWith(new_container);
-        
+        console.log(this._journal);
     }
 
     /**
@@ -77,13 +77,21 @@ class App {
         text.textContent = this._journal.finalText;
         container.append(text);
 
+        return container;
+    }    
+
+    /**
+     * FunctionL _insertEmotion()
+     * Usage: Inserts the emotion text into the front end 
+     */
+
+    _insertEmotion() {
+        let container = document.querySelector(".dailyJournal");
         let emotion = document.createElement("span");
         emotion.id = "emotion";
         emotion.textContent = this._emotion[0];
-        container.append(emotion);
-
-        return container;
-    }    
+        container.append(emotion); 
+    }
 
     /**
      * Function: _photoEntry
@@ -102,7 +110,7 @@ class App {
      * Usage: Helper function to update the frontend with a new picture
      */
      async _photoButtonUpdate() {
-        this._photo = await apiRequest("GET", "/picture");
+        this._photo = await Photo.getPhoto();
         let new_container = this._createPhotoDisplay();
         document.querySelector("#dailyPictureBox").firstChild.replaceWith(new_container);
 
@@ -120,18 +128,18 @@ class App {
         let img = document.createElement("img");
         img.src = this._photo.photoURL;
         img.alt = "Image deleted or moved to a different location";
-
+        img.id = "image";
         container.append(img);
         return container;
     }
 
     /**
      * Function: _emotionUpdate()
-     * Usage: Returns the emotion of the text analyzed 
+     * Usage: updates the emotion of the text analyzed 
      */
     async _emotionUpdate() {
         this._emotion = await this._journal.getEmotion();
-        console.log("This is emotion!", this._emotion[0]);
+        this._insertEmotion();
     }
 
     /**
@@ -139,10 +147,10 @@ class App {
      * Usage: Uploads the frontend with a pair of new picture and journal entry
      */ 
     async _loadProfile(event) {
-        event.preventDefault();
-        this._journalUpdate();
-        this._photoButtonUpdate();
-        this._emotionUpdate();
+        //event.preventDefault();
+        await this._journalUpdate();
+        await this._photoButtonUpdate();
+        await this._emotionUpdate();
     } 
 }
 

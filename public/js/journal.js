@@ -3,12 +3,6 @@
  */
 
  import apiRequest from "./api.js";
- //import require from "https://cdnjs.deepai.org/deepai.min.js";
- //import deepai from "./deepai.min.js";
-
- 
- //const deepai_Var = require('deepai');
-// deepai.setApiKey("quickstart-QUdJIGlzIGNvbWluZy4uLi4K");
 
 
 
@@ -59,10 +53,6 @@
         let result = await deepai.callStandardApi("sentiment-analysis", {
             text: this.finalText
         });
-        console.log(typeof(this.finalText));
-        //console.log("11");
-        //console.log(result.output);
-        //let data = await deepai.callStandardApi("text-generator", {text: "My name is Bi Tian Yuan"});
         return result.output;
     }
  }
