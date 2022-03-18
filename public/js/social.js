@@ -147,7 +147,6 @@ class App {
      * Usage: Uploads the frontend with a pair of new picture and journal entry
      */ 
     async _loadProfile(event) {
-        //event.preventDefault();
         await this._journalUpdate();
         await this._photoButtonUpdate();
         await this._emotionUpdate();
